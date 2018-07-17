@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5se-Un-CRM" customClass="ZASTextFieldFormat">
+                                <rect key="frame" x="30" y="120" width="315" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VEh-Yb-ZeJ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UXg-A3-nTR" customClass="ZASTextFieldFormat">
+                                <rect key="frame" x="30" y="234" width="315" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cuf-3A-Uf2"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiV-AX-CUw">
+                                <rect key="frame" x="30" y="84.5" width="52" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drL-MW-UGV">
+                                <rect key="frame" x="30" y="198.5" width="52" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UXg-A3-nTR" firstAttribute="top" secondItem="5se-Un-CRM" secondAttribute="bottom" constant="70" id="1Jr-97-tCa"/>
+                            <constraint firstItem="IiV-AX-CUw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="6Ka-kq-U90"/>
+                            <constraint firstAttribute="trailing" secondItem="UXg-A3-nTR" secondAttribute="trailing" constant="30" id="FYX-tQ-iMO"/>
+                            <constraint firstItem="5se-Un-CRM" firstAttribute="top" secondItem="IiV-AX-CUw" secondAttribute="bottom" constant="15" id="OUY-j9-CdT"/>
+                            <constraint firstItem="5se-Un-CRM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="PaN-Sm-eA4"/>
+                            <constraint firstItem="drL-MW-UGV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Rwf-nO-Zff"/>
+                            <constraint firstItem="UXg-A3-nTR" firstAttribute="top" secondItem="drL-MW-UGV" secondAttribute="bottom" constant="15" id="Xu9-Ie-gv3"/>
+                            <constraint firstItem="UXg-A3-nTR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="aw9-8T-gTU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5se-Un-CRM" secondAttribute="trailing" constant="30" id="jfC-sb-CtN"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IiV-AX-CUw" secondAttribute="trailing" constant="20" symbolic="YES" id="mZP-fc-DGp"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="drL-MW-UGV" secondAttribute="trailing" constant="20" symbolic="YES" id="o2M-ab-0IR"/>
+                            <constraint firstItem="5se-Un-CRM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="uiH-Kl-RmG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tfBankCard" destination="UXg-A3-nTR" id="kYS-9D-1fo"/>
+                        <outlet property="tfPhone" destination="5se-Un-CRM" id="S9M-xN-N2T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+</document>
