@@ -19,6 +19,8 @@
 ```
 
 ### 具体使用
+使原有UITextField继承自ZASTextFieldFormat，然后调用如何接口即可；
+
 ```
 [_tfPhone textFieldWithFormat:@"### #### ####" charactersInString:@"0123456789" maxLimit:11];
 ```
