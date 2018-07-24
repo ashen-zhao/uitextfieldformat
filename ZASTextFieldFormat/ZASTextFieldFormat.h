@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ZASTextFieldFormatDelegate <NSObject>
+@optional
+- (BOOL)zasTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+
+@end
+
 @interface ZASTextFieldFormat : UITextField
+
+@property (nonatomic, assign) id<ZASTextFieldFormatDelegate> zasDelegate;
 
 /**
  * 设置UITextFiled格式控制的入口

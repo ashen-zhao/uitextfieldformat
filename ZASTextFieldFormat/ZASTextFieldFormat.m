@@ -98,6 +98,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    if (self.zasDelegate && [self.zasDelegate respondsToSelector:@selector(zasTextField:shouldChangeCharactersInRange:replacementString:)]) {
+        [_zasDelegate zasTextField:textField shouldChangeCharactersInRange:range replacementString:string];
+    }
+    
     if (self.charactersInString.length > 0) {
         NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:self.charactersInString];
         if ([string rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
@@ -113,7 +117,7 @@
         return NO;
     }
     
-    if (!self.charactersInString.length && !self.format.length) {
+    if (!self.format.length) {
         return YES;
     }
     
