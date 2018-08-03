@@ -12,7 +12,7 @@
 /*
  * 支持的字符串
  * eg: abcde0123456
- * 输入框内只能输入abcde0123456
+ * 输入框内只能输入abcde0123456的组合
  */
 @property (nonatomic, copy) NSString *charactersInString;
 /*
@@ -101,9 +101,19 @@
     if (self.zasDelegate && [self.zasDelegate respondsToSelector:@selector(zasTextField:shouldChangeCharactersInRange:replacementString:)]) {
         [_zasDelegate zasTextField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
+    // 优先处理设置正则模式
+    if (_pattern) {
+        NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSRegularExpression * regex = [[NSRegularExpression alloc] initWithPattern:_pattern options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];
+        NSInteger numberofMatches = [regex numberOfMatchesInString:newString options:NSMatchingReportProgress range:NSMakeRange(0, newString.length)];
+        
+        return numberofMatches != 0;
+    }
     
+    // 是否设置了允许输入类型
     if (self.charactersInString.length > 0) {
         NSCharacterSet *characterSet = [NSCharacterSet characterSetWithCharactersInString:self.charactersInString];
+        //是否输入了不允许的字符
         if ([string rangeOfCharacterFromSet:[characterSet invertedSet]].location != NSNotFound) {
             return NO;
         }
@@ -113,10 +123,26 @@
     text = [text stringByReplacingCharactersInRange:range withString:string];
     text = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    if (text.length > self.maxLimit) {
+    if (_maxLimit != 0 && text.length > _maxLimit) {
         return NO;
     }
     
+    // 如果设置为浮点类型，则优先处理，此时忽略format设置
+    if (_isFloat) {
+        if ([textField.text isEqualToString:@""] && ([string isEqualToString:@"."] || [string isEqualToString:@"0"])) {
+            textField.text = @"0.";
+        }
+        
+        NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSString * expression = @"^[0]?[1-9]*((\\.)[0-9]{0,2})?$";
+        NSRegularExpression * regex = [[NSRegularExpression alloc] initWithPattern:expression options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];
+        NSInteger numberofMatches = [regex numberOfMatchesInString:newString options:NSMatchingReportProgress range:NSMakeRange(0, newString.length)];
+        
+        return numberofMatches != 0;
+    }
+    
+    
+    // 如果format没有设置，则不进行处理#的问题
     if (!self.format.length) {
         return YES;
     }
@@ -149,5 +175,41 @@
     }
     
     return NO;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTextFieldShouldBeginEditing:)]) {
+        return [_zasDelegate zasTextFieldShouldBeginEditing:textField];
+    }
+    return YES;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTextFieldDidBeginEditing:)]) {
+        [_zasDelegate zasTextFieldDidBeginEditing:textField];
+    }
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTextFieldShouldEndEditing:)]) {
+        return [_zasDelegate zasTextFieldShouldEndEditing:textField];
+    }
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTextFieldDidEndEditing:)]) {
+        [_zasDelegate zasTextFieldDidEndEditing:textField];
+    }
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTtextFieldShouldClear:)]) {
+        return [_zasDelegate zasTtextFieldShouldClear:textField];
+    }
+    return YES;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (_zasDelegate && [_zasDelegate respondsToSelector:@selector(zasTextFieldShouldReturn:)]) {
+        return [_zasDelegate zasTextFieldShouldReturn:textField];
+    }
+    return YES;
 }
 @end

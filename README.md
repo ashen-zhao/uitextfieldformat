@@ -7,7 +7,8 @@
 ### 接口说明
 ```
 /**
- * 设置UITextFiled格式控制的入口
+ * 设置UITextFiled格式控制的入口 (注：这个入口必须被调用)
+ * format=nil或者""则不限制格式, charactersInString=nil或者""则不限制字符, maxLimit=0则不限制个数
  *
  * 示例: 以手机号为例
  * @param format              格式，eg: ### #### ####
