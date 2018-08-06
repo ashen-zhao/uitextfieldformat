@@ -6,6 +6,25 @@
 
 ### 接口说明
 ```
+
+/**
+ * ZASTextFieldFormatDelegate代理
+ *
+ */
+@property (nonatomic, assign) id<ZASTextFieldFormatDelegate> zasDelegate;
+
+/**
+ * 设置浮点类型,只允许输入两位小数的浮点类型（default=NO）
+ * 
+ */
+@property (nonatomic, assign) Boolean isFloat;
+
+/**
+ * 设置正则匹配模式（如果设置正则模式，则忽略其他格式限制）
+ *
+ */
+@property (nonatomic, copy) NSString * pattern;
+
 /**
  * 设置UITextFiled格式控制的入口 (注：这个入口必须被调用)
  * format=nil或者""则不限制格式, charactersInString=nil或者""则不限制字符, maxLimit=0则不限制个数

@@ -19,8 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_tfPhone textFieldWithFormat:@"" charactersInString:@"aaaaa" maxLimit:0];
-    _tfPhone.pattern = @"^[0]?[1-9]*((\\.)[0-9]{0,2})?$";
+    [_tfPhone textFieldWithFormat:@"### #### ####" charactersInString:@"0123456789" maxLimit:11];
     [_tfBankCard textFieldWithFormat:@"#### #### #### #### ###" charactersInString:@"0123456789" maxLimit:19];
 }
 
