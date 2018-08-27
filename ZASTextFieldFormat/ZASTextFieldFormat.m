@@ -134,7 +134,7 @@
         }
         
         NSString * newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSString * expression = @"^[0]?[1-9]*((\\.)[0-9]{0,2})?$";
+        NSString * expression = @"^[0]?[0-9]*((\\.)[0-9]{0,2})?$";
         NSRegularExpression * regex = [[NSRegularExpression alloc] initWithPattern:expression options:NSRegularExpressionAllowCommentsAndWhitespace error:nil];
         NSInteger numberofMatches = [regex numberOfMatchesInString:newString options:NSMatchingReportProgress range:NSMakeRange(0, newString.length)];
         

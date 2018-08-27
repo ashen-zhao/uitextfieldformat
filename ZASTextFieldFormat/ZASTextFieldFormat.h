@@ -42,13 +42,13 @@
 
 /**
  * 设置浮点类型,只允许输入两位小数的浮点类型（default=NO）
- * 
+ * 需先调用textFieldWithFormat方法，才可设置
  */
 @property (nonatomic, assign) Boolean isFloat;
 
 /**
  * 设置正则匹配模式（如果设置正则模式，则忽略其他格式限制）
- *
+ * 需先调用textFieldWithFormat方法，才可设置
  */
 @property (nonatomic, copy) NSString * pattern;
 
