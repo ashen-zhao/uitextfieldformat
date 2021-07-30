@@ -42,6 +42,7 @@
 
 /**
  * 设置浮点类型,只允许输入两位小数的浮点类型（default=NO）
+ * （如果设置浮点为YES，则优先实现浮点限制）
  * 需先调用textFieldWithFormat方法，才可设置
  */
 @property (nonatomic, assign) Boolean isFloat;

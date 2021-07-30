@@ -1,7 +1,7 @@
 # ZASTextFieldFormat
 
 ### 简介
-一行代码，设置UITextField的输入格式限制，比如手机号、身份证号、银行卡号格式以及输入字符类型个数的限制等；
+一行代码，设置UITextField的输入格式限制，比如手机号、身份证号、银行卡号格式、浮点类型限制以及输入字符类型个数的限制等；
 
 
 ### 接口说明
@@ -15,7 +15,8 @@
 
 /**
  * 设置浮点类型,只允许输入两位小数的浮点类型（default=NO）
- * 
+ * （如果设置浮点为YES，则优先实现浮点限制）
+ * 需先调用textFieldWithFormat方法，才可设置
  */
 @property (nonatomic, assign) Boolean isFloat;
 
@@ -39,7 +40,7 @@
 ```
 
 ### 具体使用
-使原有UITextField继承自ZASTextFieldFormat，然后调用如何接口即可；
+使原有UITextField继承自ZASTextFieldFormat，然后调用如下接口即可；
 
 ```
 [_tfPhone textFieldWithFormat:@"### #### ####" charactersInString:@"0123456789" maxLimit:11];
